@@ -72,6 +72,38 @@
             </div>
         </div>
         
+        <!-- Service 3: Rural Town .gov Transitions -->
+        <div style="max-width: 1000px; margin: 80px auto;">
+            <div style="background: white; border: 1px solid #eee; border-radius: 15px; padding: 50px;">
+                <h2 style="color: #2c5530; text-align: center; margin-bottom: 30px;">Official .gov Websites for Rural Towns</h2>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px;">
+                    <div>
+                        <h3 style="color: #ff6b35; margin-bottom: 15px;">The Challenge</h3>
+                        <p style="font-size: 1.1rem;">Small towns need official .gov websites for credibility and compliance, but the transition process is complex and technical.</p>
+                    </div>
+                    
+                    <div>
+                        <h3 style="color: #2c5530; margin-bottom: 15px;">The Solution</h3>
+                        <p style="font-size: 1.1rem;">I handle the entire .gov transition process - from registration to launch - ensuring a smooth, professional transition.</p>
+                    </div>
+                </div>
+                
+                <h3 style="margin-bottom: 20px;">Complete Transition Service:</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 40px;">
+                    <div style="background: #f8f9fa; padding: 20px; border-radius: 8px;"><h4 style="color: #2c5530; margin-bottom: 10px;">Login.gov Registration</h4><p style="font-size: 0.95rem;">Handle official registration and documentation</p></div>
+                    <div style="background: #f8f9fa; padding: 20px; border-radius: 8px;"><h4 style="color: #2c5530; margin-bottom: 10px;">.gov Domain Request</h4><p style="font-size: 0.95rem;">Manage the entire approval process</p></div>
+                    <div style="background: #f8f9fa; padding: 20px; border-radius: 8px;"><h4 style="color: #2c5530; margin-bottom: 10px;">Site Development</h4><p style="font-size: 0.95rem;">Replicate and enhance your current website</p></div>
+                    <div style="background: #f8f9fa; padding: 20px; border-radius: 8px;"><h4 style="color: #2c5530; margin-bottom: 10px;">Smooth Launch</h4><p style="font-size: 0.95rem;">Complete transition with minimal disruption</p></div>
+                </div>
+                
+                <div style="text-align: center;">
+                    <a href="<?php echo get_permalink(get_page_by_path('gov-transitions')); ?>" class="btn">Learn About Our 6-Step Process</a>
+                    <a href="<?php echo get_permalink(get_page_by_path('contact')); ?>" class="btn btn-secondary" style="margin-left: 20px; background: transparent; border: 2px solid #2c5530; color: #2c5530;">Schedule Consultation</a>
+                </div>
+            </div>
+        </div>
+        
         <!-- Bottom CTA -->
         <div style="text-align: center; margin-top: 80px; padding: 60px 0; background: #f8f9fa; border-radius: 15px;">
             <h2 style="margin-bottom: 20px;">Ready to Get Started?</h2>

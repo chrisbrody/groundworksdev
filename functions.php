@@ -109,6 +109,61 @@ function handle_contact_form_submission() {
 add_action('admin_post_contact_form_submission', 'handle_contact_form_submission');
 add_action('admin_post_nopriv_contact_form_submission', 'handle_contact_form_submission');
 
+// Gov Transition Form Processing
+function handle_gov_transition_form_submission() {
+    // Verify nonce
+    if (!wp_verify_nonce($_POST['gov_transition_nonce'], 'gov_transition_form_nonce')) {
+        wp_die('Security check failed');
+    }
+    
+    // Sanitize form data
+    $town_name = sanitize_text_field($_POST['town_name']);
+    $contact_name = sanitize_text_field($_POST['contact_name']);
+    $contact_email = sanitize_email($_POST['contact_email']);
+    $contact_phone = sanitize_text_field($_POST['contact_phone']);
+    $town_website = esc_url_raw($_POST['town_website']);
+    $town_size = sanitize_text_field($_POST['town_size']);
+    $additional_info = sanitize_textarea_field($_POST['additional_info']);
+    
+    // Validate required fields
+    if (empty($town_name) || empty($contact_name) || empty($contact_email)) {
+        wp_redirect(add_query_arg('error', 'missing_fields', wp_get_referer()));
+        exit;
+    }
+    
+    // Prepare email content
+    $to = get_option('admin_email');
+    $subject = 'New .gov Transition Inquiry from ' . $town_name;
+    
+    $email_content = "New .gov transition inquiry:\n\n";
+    $email_content .= "Town Name: " . $town_name . "\n";
+    $email_content .= "Contact Name: " . $contact_name . "\n";
+    $email_content .= "Contact Email: " . $contact_email . "\n";
+    $email_content .= "Contact Phone: " . $contact_phone . "\n";
+    $email_content .= "Current Website: " . $town_website . "\n";
+    $email_content .= "Town Size: " . $town_size . "\n\n";
+    $email_content .= "Additional Information:\n" . $additional_info . "\n\n";
+    $email_content .= "Submitted from: " . home_url();
+    
+    $headers = array(
+        'Content-Type: text/plain; charset=UTF-8',
+        'From: ' . get_bloginfo('name') . ' <' . get_option('admin_email') . '>',
+        'Reply-To: ' . $contact_name . ' <' . $contact_email . '>'
+    );
+    
+    // Send email
+    $mail_sent = wp_mail($to, $subject, $email_content, $headers);
+    
+    if ($mail_sent) {
+        wp_redirect(add_query_arg('success', 'true', wp_get_referer()));
+    } else {
+        wp_redirect(add_query_arg('error', 'send_failed', wp_get_referer()));
+    }
+    exit;
+}
+add_action('admin_post_gov_transition_form_submission', 'handle_gov_transition_form_submission');
+add_action('admin_post_nopriv_gov_transition_form_submission', 'handle_gov_transition_form_submission');
+
 // Add custom body classes for easier styling
 function groundworks_body_classes($classes) {
     // Add page slug to body class

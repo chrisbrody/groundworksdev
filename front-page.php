@@ -15,7 +15,7 @@
 <!-- Services Summary -->
 <section class="section">
     <div class="container">
-        <h2>Two Services. One Goal: Save You Time.</h2>
+        <h2>Three Services. One Goal: Save You Time.</h2>
         
         <div class="services-grid">
             <div class="service-card">
@@ -26,6 +26,12 @@
             <div class="service-card">
                 <h3>Monthly Website Service</h3>
                 <p>Professional website design, hosting, updates, and maintenance — all for one simple monthly fee. No upfront costs, no surprise bills.</p>
+            </div>
+            
+            <div class="service-card">
+                <h3>Rural Town .gov Transitions</h3>
+                <p>Complete .gov website transition service for small towns — from registration to launch. Build trust with official .gov credibility.</p>
+                <a href="<?php echo get_permalink(get_page_by_path('gov-transitions')); ?>" style="color: #2c5530; text-decoration: underline; font-weight: 500;">Learn about our 6-step process →</a>
             </div>
         </div>
     </div>
