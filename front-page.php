@@ -3,35 +3,35 @@
 <!-- Hero Section -->
 <section class="hero">
     <div class="container">
-        <h1>Websites and Automation for Small Business — All for a Simple Monthly Fee.</h1>
+        <h1>Stop Wasting Time on Tasks Your Computer Should Handle</h1>
         
-        <p class="subheadline">No big bill. No IT headaches. Just results.</p>
+        <p class="subheadline">I build custom automation tools and professional websites that actually work for your business — not against it.</p>
         
-        <a href="<?php echo get_permalink(get_page_by_path('contact')); ?>" class="btn">Book a Free Discovery Call</a>
-        <a href="<?php echo get_permalink(get_page_by_path('services')); ?>" class="btn btn-secondary">See What We Can Automate</a>
+        <a href="<?php echo get_permalink(get_page_by_path('contact')); ?>" class="btn">Get Your Free Automation Audit</a>
+        <a href="<?php echo get_permalink(get_page_by_path('services')); ?>" class="btn btn-secondary">See Real Examples</a>
     </div>
 </section>
 
 <!-- Services Summary -->
 <section class="section">
     <div class="container">
-        <h2>Three Services. One Goal: Save You Time.</h2>
+        <h2>What If Your Biggest Time-Wasters Just... Disappeared?</h2>
         
         <div class="services-grid">
             <div class="service-card">
-                <h3>Custom Business Automation</h3>
-                <p>Stop doing repetitive tasks manually. I build simple software tools that handle invoicing, reports, customer follow-ups, and more — automatically.</p>
+                <h3>Smart Automation That Actually Works</h3>
+                <p>Turn your biggest time-wasters into automated processes. While your competitors spend hours on spreadsheets and manual tasks, you'll be focusing on what actually grows your business.</p>
             </div>
             
             <div class="service-card">
-                <h3>Monthly Website Service</h3>
-                <p>Professional website design, hosting, updates, and maintenance — all for one simple monthly fee. No upfront costs, no surprise bills.</p>
+                <h3>Professional Websites That Convert</h3>
+                <p>Get a website that actually brings in customers, not just looks pretty. Everything included: design, hosting, updates, and maintenance — for one predictable monthly fee.</p>
             </div>
             
             <div class="service-card">
-                <h3>Rural Town .gov Transitions</h3>
-                <p>Complete .gov website transition service for small towns — from registration to launch. Build trust with official .gov credibility.</p>
-                <a href="<?php echo get_permalink(get_page_by_path('gov-transitions')); ?>" style="color: #2c5530; text-decoration: underline; font-weight: 500;">Learn about our 6-step process →</a>
+                <h3>Official .gov Sites for Small Towns</h3>
+                <p>Finally get the credibility your town deserves. We handle the entire .gov transition process — paperwork, approvals, design, and launch. No bureaucratic headaches for you.</p>
+                <a href="<?php echo get_permalink(get_page_by_path('gov-transitions')); ?>">See our proven 6-step process →</a>
             </div>
         </div>
     </div>
@@ -40,53 +40,49 @@
 <!-- Automation Benefits -->
 <section class="section">
     <div class="container">
-        <h2>What Can Be Automated?</h2>
+        <h2>Real Businesses, Real Time Savings</h2>
         
         <ul class="benefits-list">
-            <li>Automating customer follow-ups</li>
-            <li>Syncing spreadsheets with live databases</li>
-            <li>Auto-generating and sending invoices</li>
-            <li>Compiling weekly performance reports</li>
+            <li>Local contractor saved 8 hours/week automating invoice generation and payment reminders</li>
+            <li>Retail shop eliminated manual inventory tracking — now syncs automatically with their POS</li>
+            <li>Service business automated customer follow-ups — increased repeat bookings by 40%</li>
+            <li>Restaurant streamlined staff scheduling and reduced no-shows by 60%</li>
         </ul>
         
-        <div style="text-align: center; margin-top: 40px;">
-            <p style="font-style: italic; font-size: 1.2rem; color: #666;">
-                Think you're too small to automate? You're not.
-            </p>
-        </div>
+        <!-- TODO: Add testimonials -->
     </div>
 </section>
 
 <!-- How It Works -->
 <section class="section how-it-works">
     <div class="container">
-        <h2>How Our Monthly Service Works</h2>
+        <h2>Why Monthly Pricing Actually Saves You Money</h2>
         
         <ul>
-            <li>Website design + development</li>
-            <li>Secure hosting + SSL</li>
-            <li>Unlimited updates</li>
-            <li>Tech support + maintenance</li>
+            <li>No $5,000+ upfront website bill — start for less than your monthly phone plan</li>
+            <li>No "surprise" hosting crashes or security breaches — we handle everything</li>
+            <li>No paying extra for updates or changes — unlimited revisions included</li>
+            <li>No wondering if your site is working — 24/7 monitoring and instant fixes</li>
         </ul>
         
-        <div style="text-align: center; margin-top: 40px;">
-            <p style="font-style: italic; font-size: 1.1rem;">
-                No big bill. No IT headaches. Just results.
+        <div class="text-center">
+            <p class="p-italic">
+                One predictable monthly fee. Everything included. No surprises. Ever.
             </p>
         </div>
     </div>
 </section>
 
 <!-- Final CTA -->
-<section class="section" style="background: #f8f9fa; text-align: center;">
-    <div class="container">
-        <h2>Ready to Work Smarter?</h2>
+<section class="section">
+    <div class="container text-center">
+        <h2>Stop Doing Work Your Computer Should Handle</h2>
         
-        <p style="font-size: 1.2rem; margin-bottom: 30px;">
-            Let's talk about what we can automate in your business.
+        <p>
+            Book a free 30-minute audit call. We'll identify your biggest time-wasters and show you exactly how to automate them.
         </p>
         
-        <a href="<?php echo get_permalink(get_page_by_path('contact')); ?>" class="btn">Let's Talk About Your Business</a>
+        <a href="<?php echo get_permalink(get_page_by_path('contact')); ?>" class="btn">Get My Free Automation Audit</a>
     </div>
 </section>
 

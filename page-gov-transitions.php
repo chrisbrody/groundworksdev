@@ -2,97 +2,99 @@
 
 <section class="section">
     <div class="container">
-        <h1 style="text-align: center; margin-bottom: 60px;">Rural Town .gov Website Transitions</h1>
+        <div class="page-header">
+            <h1>Helping Towns Transition to mandated .gov Websites</h1>
+        </div>
         
         <!-- Main Service Section -->
-        <div style="max-width: 1000px; margin: 0 auto 80px auto;">
-            <div style="background: white; border: 1px solid #eee; border-radius: 15px; padding: 50px; margin-bottom: 60px;">
-                <h2 style="color: #2c5530; text-align: center; margin-bottom: 30px;">Professional .gov Websites for Small Rural Towns</h2>
+        <div class="service-section">
+            <div class="service-box">
+                <h2>Professional .gov Websites for Small Rural Towns</h2>
                 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px;">
+                <div class="two-column">
                     <div>
-                        <h3 style="color: #ff6b35; margin-bottom: 15px;">The Challenge</h3>
-                        <p style="font-size: 1.1rem;">Small rural towns need official .gov websites to build trust with residents and comply with transparency requirements, but lack the technical expertise to navigate the complex transition process.</p>
+                        <h3>The Challenge</h3>
+                        <p>Small rural towns need official .gov websites to build trust with residents and comply with transparency requirements, but lack the technical expertise to navigate the complex transition process.</p>
                     </div>
                     
                     <div>
-                        <h3 style="color: #2c5530; margin-bottom: 15px;">The Solution</h3>
-                        <p style="font-size: 1.1rem;">I handle the entire .gov transition process for your town - from registration to launch - ensuring a smooth, professional transition that your residents can trust.</p>
+                        <h3>The Solution</h3>
+                        <p>I handle the entire .gov transition process for your town - from registration to launch - ensuring a smooth, professional transition that your residents can trust.</p>
                     </div>
                 </div>
                 
-                <div style="text-align: center; margin-bottom: 50px;">
+                <div class="text-center">
                     <button onclick="openGovTransitionModal()" class="btn">Start Your Town's .gov Transition</button>
                 </div>
             </div>
         </div>
         
         <!-- 6-Step Process -->
-        <div style="max-width: 1200px; margin: 0 auto 80px auto;">
-            <h2 style="color: #2c5530; text-align: center; margin-bottom: 50px;">Our Complete 6-Step Transition Process</h2>
+        <div class="service-section">
+            <h2>Our Complete 6-Step Transition Process</h2>
             
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-bottom: 60px;">
-                <div style="background: white; border: 1px solid #eee; border-radius: 15px; padding: 30px; position: relative;">
-                    <div style="background: #2c5530; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; margin-bottom: 20px;">1</div>
-                    <h3 style="color: #2c5530; margin-bottom: 15px;">Login.gov Registration</h3>
+            <div class="step-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Login.gov Registration</h3>
                     <p>I help get a town representative registered on login.gov to begin the official .gov website request process. I can serve as your town's designated representative if needed.</p>
                 </div>
                 
-                <div style="background: white; border: 1px solid #eee; border-radius: 15px; padding: 30px; position: relative;">
-                    <div style="background: #2c5530; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; margin-bottom: 20px;">2</div>
-                    <h3 style="color: #2c5530; margin-bottom: 15px;">.gov Domain Request</h3>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>.gov Domain Request</h3>
                     <p>Submit the official .gov website application for your town and manage the approval process. I handle all documentation and communications with the .gov registry.</p>
                 </div>
                 
-                <div style="background: white; border: 1px solid #eee; border-radius: 15px; padding: 30px; position: relative;">
-                    <div style="background: #2c5530; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; margin-bottom: 20px;">3</div>
-                    <h3 style="color: #2c5530; margin-bottom: 15px;">Site Development & Training</h3>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Site Development & Training</h3>
                     <p>While waiting for approval, I replicate your current website for the new .gov domain and provide comprehensive training for updates. I can also handle all website management ongoing.</p>
                 </div>
                 
-                <div style="background: white; border: 1px solid #eee; border-radius: 15px; padding: 30px; position: relative;">
-                    <div style="background: #2c5530; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; margin-bottom: 20px;">4</div>
-                    <h3 style="color: #2c5530; margin-bottom: 15px;">Hosting Setup</h3>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h3>Hosting Setup</h3>
                     <p>Once your .gov domain is approved, we launch your new website. Choose between my managed hosting services or work with your town's preferred hosting provider.</p>
                 </div>
                 
-                <div style="background: white; border: 1px solid #eee; border-radius: 15px; padding: 30px; position: relative;">
-                    <div style="background: #2c5530; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; margin-bottom: 20px;">5</div>
-                    <h3 style="color: #2c5530; margin-bottom: 15px;">IT Integration</h3>
+                <div class="step-card">
+                    <div class="step-number">5</div>
+                    <h3>IT Integration</h3>
                     <p>Coordinate with your town's IT team (or provide IT services) to ensure smooth transition of email systems and website functionality to the new .gov infrastructure.</p>
                 </div>
                 
-                <div style="background: white; border: 1px solid #eee; border-radius: 15px; padding: 30px; position: relative;">
-                    <div style="background: #2c5530; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; margin-bottom: 20px;">6</div>
-                    <h3 style="color: #2c5530; margin-bottom: 15px;">Launch & Transition</h3>
+                <div class="step-card">
+                    <div class="step-number">6</div>
+                    <h3>Launch & Transition</h3>
                     <p>Provide official announcements for local papers, set up automatic redirects from your old website, and monitor the transition for several months until everything runs smoothly.</p>
                 </div>
             </div>
         </div>
         
         <!-- Benefits Section -->
-        <div style="max-width: 1000px; margin: 0 auto 80px auto;">
-            <div style="background: #f8f9fa; border-radius: 15px; padding: 50px;">
-                <h2 style="color: #2c5530; text-align: center; margin-bottom: 40px;">Why Your Town Needs a .gov Website</h2>
+        <div class="service-section">
+            <div class="benefits-section">
+                <h2>Why Your Town Needs a .gov Website</h2>
                 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
-                    <div style="text-align: center;">
-                        <h4 style="color: #ff6b35; margin-bottom: 15px;">Enhanced Trust</h4>
+                <div class="benefits-grid">
+                    <div>
+                        <h4>Enhanced Trust</h4>
                         <p>Citizens immediately recognize .gov as official government communication, building confidence in your town's online presence.</p>
                     </div>
                     
-                    <div style="text-align: center;">
-                        <h4 style="color: #ff6b35; margin-bottom: 15px;">Security Standards</h4>
+                    <div>
+                        <h4>Security Standards</h4>
                         <p>.gov domains come with enhanced security measures and requirements that protect your town's data and residents' information.</p>
                     </div>
                     
-                    <div style="text-align: center;">
-                        <h4 style="color: #ff6b35; margin-bottom: 15px;">Professional Image</h4>
+                    <div>
+                        <h4>Professional Image</h4>
                         <p>A .gov website demonstrates that your town is modern, professional, and committed to transparent communication.</p>
                     </div>
                     
-                    <div style="text-align: center;">
-                        <h4 style="color: #ff6b35; margin-bottom: 15px;">Compliance Ready</h4>
+                    <div>
+                        <h4>Compliance Ready</h4>
                         <p>Meet federal and state requirements for government transparency and digital accessibility standards.</p>
                     </div>
                 </div>
@@ -100,10 +102,10 @@
         </div>
         
         <!-- CTA Section -->
-        <div style="text-align: center; margin-top: 80px; padding: 60px 0; background: linear-gradient(135deg, #2c5530 0%, #1a3d1f 100%); color: white; border-radius: 15px;">
-            <h2 style="margin-bottom: 20px; color: white;">Ready to Get Your Town's Official .gov Website?</h2>
-            <p style="font-size: 1.2rem; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto; opacity: 0.9;">Let's discuss your town's needs and start the transition to a professional, secure .gov website that your residents can trust.</p>
-            <button onclick="openGovTransitionModal()" class="btn" style="background: #ff6b35; border: none;">Schedule Your Free .gov Consultation</button>
+        <div class="cta-section">
+            <h2>Ready to Get Your Town's Official .gov Website?</h2>
+            <p>Let's discuss your town's needs and start the transition to a professional, secure .gov website that your residents can trust.</p>
+            <button onclick="openGovTransitionModal()" class="btn">Schedule Your Free .gov Consultation</button>
         </div>
     </div>
 </section>
@@ -243,7 +245,7 @@
 
 .modal-header h3 {
     margin: 0;
-    color: #2c5530;
+    color: #1e293b;
     font-size: 1.5rem;
 }
 
@@ -302,7 +304,7 @@
 .gov-transition-form select:focus,
 .gov-transition-form textarea:focus {
     outline: none;
-    border-color: #2c5530;
+    border-color: #1e293b;
 }
 
 .gov-transition-form textarea {
@@ -394,10 +396,10 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-// Auto-open modal if there's a success/error message
+// Only auto-open modal if there's a success/error message AND it's a form submission
 document.addEventListener('DOMContentLoaded', function() {
     const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('success') || urlParams.get('error')) {
+    if ((urlParams.get('success') || urlParams.get('error')) && urlParams.get('form_submitted')) {
         openGovTransitionModal();
     }
 });

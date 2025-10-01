@@ -2,48 +2,37 @@
 
 <section class="section">
     <div class="container">
-        <div style="max-width: 800px; margin: 0 auto;">
-            <h1 style="text-align: center; margin-bottom: 40px;"><?php the_title(); ?></h1>
+        <div class="page-header">
+            <h1><?php the_title(); ?></h1>
             
-            <!-- Mission Statement -->
-            <div style="text-align: center; margin-bottom: 60px;">
-                <h2 style="font-size: 2rem; margin-bottom: 20px;">My Mission</h2>
-                <p style="font-size: 1.3rem; font-style: italic; color: #2c5530;">
-                    I help small businesses run smarter with software solutions that save time, cut costs, and eliminate stress.
-                </p>
-            </div>
-            
-            <!-- My Story -->
-            <div style="margin-bottom: 60px;">
-                <h2>My Story</h2>
-                
-                <div style="font-size: 1.1rem; line-height: 1.8;">
-                    <p>After years of working with businesses of all sizes, I discovered that small business owners spend way too much time on repetitive tasks that could easily be automated. Whether it's manually creating invoices, copying data between spreadsheets, or following up with customers, these tasks eat away at the time you could be spending growing your business.</p>
-                    <p>That's why I started GroundWorks Development. I believe every business, no matter how small, deserves access to smart automation and professional web presence without breaking the bank or dealing with complicated tech jargon.</p>
+            <div class="service-section">
+                <div class="service-box">
+                    <!-- Owner Info -->
+                    <div>
+                        <img src="<?php echo get_template_directory_uri(); ?>/img/hero.jpg" alt="chris brody overlooking the canyon">
+                        <h2>Chris Brody - Automation Tool Engineer</h2>
+                    </div> 
+                    <!-- Mission Statement -->
+                    <h3 class="text-center">My Mission</h3>
+                    <p>
+                        I help small businesses work smarter by building tools and websites that save time, reduce stress, and make day-to-day operations easier.
+                    </p>
+
+                    <!-- My Story -->
+                    <h3 class="text-center">My Story</h3>
+                    
+                    <div>
+                        <p>I've spent years working with businesses of all shapes and sizes, and one thing always stood out: small business owners are constantly weighed down by repetitive tasks. Things like sending invoices, updating spreadsheets, or following up with customers take up hours every week — hours that could be spent growing your business or simply catching your breath.</p>
+                        <p>I started GroundWorks Development because I believe small businesses deserve the same kind of smart solutions as larger companies — without the high price tag or the confusing tech talk. My goal is to make technology feel like a partner in your business, not another headache.</p>
+                    </div>
                 </div>
             </div>
             
-            <!-- Why Solo Works -->
-            <div style="background: #f8f9fa; padding: 40px; border-radius: 10px; margin-bottom: 60px;">
-                <h2>Why Solo Works Better</h2>
-                
-                <ul style="list-style: none; font-size: 1.1rem;">
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eee;"><strong>→</strong> No middlemen, no project managers</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eee;"><strong>→</strong> Lower overhead = better pricing</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid #eee;"><strong>→</strong> You talk directly to the builder</li>
-                    <li style="padding: 10px 0;"><strong>→</strong> Faster decisions, faster results</li>
-                </ul>
-                
-                <p style="margin-top: 30px; font-style: italic; text-align: center;">
-                    Let's build something together — and keep it simple.
-                </p>
-            </div>
-            
             <!-- CTA -->
-            <div style="text-align: center; background: linear-gradient(135deg, #2c5530 0%, #4a7c59 100%); color: white; padding: 50px; border-radius: 10px;">
-                <h3 style="color: white; margin-bottom: 20px;">Ready to Work Together?</h3>
-                <p style="margin-bottom: 30px; font-size: 1.1rem;">
-                    Let's discuss how I can help automate your business and save you time.
+            <div class="cta-section">
+                <h3>Let's Talk</h3>
+                <p>
+                    If you're ready to see how automation or a reliable website could save you time, I'd love to chat.
                 </p>
                 <a href="<?php echo get_permalink(get_page_by_path('contact')); ?>" class="btn">Get In Touch</a>
             </div>

@@ -2,54 +2,182 @@
 
 <section class="section">
     <div class="container">
-        <div style="max-width: 800px; margin: 0 auto;">
-            <div style="text-align: center; margin-bottom: 40px;">
-                <a href="<?php echo get_post_type_archive_link('case_study'); ?>" style="color: #666; text-decoration: none; font-size: 0.9rem;">
+        <div class="service-section">
+            <div class="text-center mb-60">
+                <a href="<?php echo get_post_type_archive_link('case_study'); ?>">
                     ← Back to Case Studies
                 </a>
             </div>
             
-            <article>
-                <header style="text-align: center; margin-bottom: 50px;">
-                    <h1 style="margin-bottom: 15px;"><?php the_title(); ?></h1>
-                    <p style="color: #666; font-size: 1.1rem;">Small Business</p>
+            <article class="service-box">
+                <header class="text-center">
+                    <h1><?php the_title(); ?></h1>
+                    <p><?php 
+                        $client_type = get_field('client_type');
+                        echo $client_type ? $client_type : 'Small Business';
+                    ?></p>
                 </header>
                 
-                <div style="background: white; border: 1px solid #eee; border-radius: 15px; padding: 40px;">
+                <div class="mt-40">
                     <!-- Challenge -->
-                    <div style="margin-bottom: 40px;">
-                        <h2 style="color: #ff6b35; margin-bottom: 20px; font-size: 1.5rem;">The Challenge</h2>
-                        <div style="font-size: 1.1rem; line-height: 1.7;">
-                            <?php the_content(); ?>
+                    <div class="service-section">
+                        <h2>The Challenge</h2>
+                        <div>
+                            <?php 
+                            $challenge = get_field('challenge');
+                            if ($challenge) {
+                                // Convert markdown-style formatting to HTML
+                                $challenge = preg_replace('/^\*\*(.*?)\*\*$/m', '<h4>$1</h4>', $challenge); // Convert **Headers** to h4
+                                $challenge = preg_replace('/\*\*(.*?)\*\*/', '<strong>$1</strong>', $challenge); // Convert **bold** to strong
+                                
+                                // Use wp_kses to allow specific HTML tags and output safely
+                                $allowed_html = array(
+                                    'h4' => array(),
+                                    'strong' => array(),
+                                    'p' => array(),
+                                    'br' => array(),
+                                    'ul' => array(),
+                                    'ol' => array(),
+                                    'li' => array(),
+                                    'em' => array()
+                                );
+                                
+                                echo wp_kses(wpautop($challenge), $allowed_html);
+                            } else {
+                                the_content();
+                            }
+                            ?>
                         </div>
                     </div>
                     
                     <!-- Solution -->
-                    <div style="margin-bottom: 40px;">
-                        <h2 style="color: #2c5530; margin-bottom: 20px; font-size: 1.5rem;">The Solution</h2>
-                        <div style="font-size: 1.1rem; line-height: 1.7;">
-                            <p>Solution details would be described here using the post excerpt or additional content.</p>
+                    <div class="service-section">
+                        <h2>The Solution</h2>
+                        <div>
+                            <?php 
+                            $solution = get_field('solution');
+                            if ($solution) {
+                                // Convert markdown-style formatting to HTML
+                                $solution = preg_replace('/^\*\*(.*?)\*\*$/m', '<h4>$1</h4>', $solution); // Convert **Headers** to h4
+                                $solution = preg_replace('/\*\*(.*?)\*\*/', '<strong>$1</strong>', $solution); // Convert **bold** to strong
+                                
+                                // Use wp_kses to allow specific HTML tags and output safely
+                                $allowed_html = array(
+                                    'h4' => array(),
+                                    'strong' => array(),
+                                    'p' => array(),
+                                    'br' => array(),
+                                    'ul' => array(),
+                                    'ol' => array(),
+                                    'li' => array(),
+                                    'em' => array()
+                                );
+                                
+                                echo wp_kses(wpautop($solution), $allowed_html);
+                            } else {
+                                echo '<p>Solution details will be available when ACF fields are configured or content is added.</p>';
+                            }
+                            ?>
                         </div>
                     </div>
                     
                     <!-- Result -->
-                    <div style="margin-bottom: 40px;">
-                        <h2 style="color: #2c5530; margin-bottom: 20px; font-size: 1.5rem;">The Result</h2>
-                        <div style="background: linear-gradient(135deg, #2c5530 0%, #4a7c59 100%); color: white; padding: 30px; border-radius: 10px;">
-                            <div style="font-size: 1.1rem; line-height: 1.7;">
-                                <p>Results and impact would be quantified here with specific metrics and outcomes.</p>
-                            </div>
+                    <div class="service-section">
+                        <h2>The Result</h2>
+                        <div>
+                            <?php 
+                            $result = get_field('result');
+                            if ($result) {
+                                // Convert markdown-style formatting to HTML
+                                $result = preg_replace('/^\*\*(.*?)\*\*$/m', '<h4>$1</h4>', $result); // Convert **Headers** to h4
+                                $result = preg_replace('/\*\*(.*?)\*\*/', '<strong>$1</strong>', $result); // Convert **bold** to strong
+                                
+                                // Use wp_kses to allow specific HTML tags and output safely
+                                $allowed_html = array(
+                                    'h4' => array(),
+                                    'strong' => array(),
+                                    'p' => array(),
+                                    'br' => array(),
+                                    'ul' => array(),
+                                    'ol' => array(),
+                                    'li' => array(),
+                                    'em' => array()
+                                );
+                                
+                                echo wp_kses(wpautop($result), $allowed_html);
+                            } else {
+                                echo '<p>Results and impact will be displayed when ACF fields are configured or content is added.</p>';
+                            }
+                            ?>
                         </div>
+                        
+                        <?php 
+                        // Display Result Metrics if available
+                        $result_metrics = get_field('result_metrics');
+                        if ($result_metrics) : ?>
+                            <div class="mt-40">
+                                <h3>Key Performance Metrics</h3>
+                                <div class="feature-grid">
+                                    <?php 
+                                    $metrics = explode("\n", $result_metrics);
+                                    foreach($metrics as $metric) {
+                                        if (trim($metric)) {
+                                            echo '<div class="feature-card"><p>' . trim($metric) . '</p></div>';
+                                        }
+                                    }
+                                    ?>
+                                </div>
+                            </div>
+                        <?php endif; ?>
                     </div>
                     
                 </div>
                 
+                <!-- Technologies Used -->
+                <?php 
+                $technologies = get_field('technologies_used');
+                if ($technologies) : ?>
+                    <div class="service-section">
+                        <h2>Technologies Used</h2>
+                        <div class="checkmark-grid">
+                            <div>
+                                <?php 
+                                $tech_list = explode(',', $technologies);
+                                foreach($tech_list as $tech) {
+                                    if (trim($tech)) {
+                                        echo '<div class="checkmark-item"><span>⚡</span><span>' . trim($tech) . '</span></div>';
+                                    }
+                                }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif; ?>
+                
+                <!-- Client Testimonial -->
+                <?php 
+                $client_quote = get_field('client_quote');
+                $client_name = get_field('client_name');
+                if ($client_quote) : ?>
+                    <div class="service-section">
+                        <div class="benefits-section text-center">
+                            <h3>Client Testimonial</h3>
+                            <blockquote style="font-style: italic; font-size: 1.2rem; color: #475569; margin: 30px 0;">
+                                "<?php echo esc_html($client_quote); ?>"
+                            </blockquote>
+                            <?php if ($client_name) : ?>
+                                <p style="font-weight: 600; color: #1e293b;">— <?php echo esc_html($client_name); ?></p>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+                
                 <!-- Navigation -->
-                <div style="display: flex; justify-content: space-between; margin-top: 40px; padding-top: 30px; border-top: 1px solid #eee;">
+                <div class="two-column text-center mt-40">
                     <div>
                         <?php $prev_post = get_previous_post(); ?>
                         <?php if ($prev_post) : ?>
-                            <a href="<?php echo get_permalink($prev_post); ?>" style="color: #666; text-decoration: none;">
+                            <a href="<?php echo get_permalink($prev_post); ?>">
                                 ← Previous Case Study
                             </a>
                         <?php endif; ?>
@@ -57,7 +185,7 @@
                     <div>
                         <?php $next_post = get_next_post(); ?>
                         <?php if ($next_post) : ?>
-                            <a href="<?php echo get_permalink($next_post); ?>" style="color: #666; text-decoration: none;">
+                            <a href="<?php echo get_permalink($next_post); ?>">
                                 Next Case Study →
                             </a>
                         <?php endif; ?>
@@ -67,9 +195,9 @@
         </div>
         
         <!-- CTA -->
-        <div style="text-align: center; margin-top: 80px; background: #f8f9fa; padding: 50px; border-radius: 15px;">
-            <h2 style="margin-bottom: 20px;">Interested in Similar Results?</h2>
-            <p style="font-size: 1.1rem; margin-bottom: 30px; color: #666;">
+        <div class="cta-section">
+            <h2>Interested in Similar Results?</h2>
+            <p>
                 Let's discuss how I can help automate your business processes and deliver measurable improvements.
             </p>
             <a href="<?php echo get_permalink(get_page_by_path('contact')); ?>" class="btn">Get Your Free Consultation</a>

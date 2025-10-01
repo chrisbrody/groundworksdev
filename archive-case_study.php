@@ -2,9 +2,9 @@
 
 <section class="section">
     <div class="container">
-        <div style="text-align: center; margin-bottom: 60px;">
+        <div class="page-header">
             <h1>Case Studies</h1>
-            <p style="font-size: 1.2rem; color: #666; max-width: 600px; margin: 20px auto 0;">
+            <p>
                 <?php 
                 // ACF: Case Studies Archive Intro
                 $archive_intro = get_field('case_studies_intro', 'option');
@@ -13,18 +13,18 @@
             </p>
         </div>
         
-        <div style="max-width: 900px; margin: 0 auto;">
+        <div>
             <?php if (have_posts()) : ?>
                 <?php while (have_posts()) : the_post(); ?>
                     <article class="case-study">
-                        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 30px; align-items: start;">
+                        <div class="two-column">
                             <div>
-                                <h3 style="margin-bottom: 10px;">
-                                    <a href="<?php the_permalink(); ?>" style="text-decoration: none; color: #2c5530;">
+                                <h3>
+                                    <a href="<?php the_permalink(); ?>">
                                         <?php the_title(); ?>
                                     </a>
                                 </h3>
-                                <p style="color: #666; font-size: 0.9rem; margin-bottom: 15px;">
+                                <p>
                                     <?php 
                                     // ACF: Client Type/Industry
                                     $client_type = get_field('client_type');
@@ -34,9 +34,9 @@
                             </div>
                             
                             <div>
-                                <div style="margin-bottom: 15px;">
+                                <div>
                                     <span class="label">Challenge:</span>
-                                    <p style="margin: 5px 0;">
+                                    <p>
                                         <?php 
                                         // ACF: Challenge (excerpt)
                                         $challenge = get_field('challenge');
@@ -45,9 +45,9 @@
                                     </p>
                                 </div>
                                 
-                                <div style="margin-bottom: 15px;">
+                                <div>
                                     <span class="label">Result:</span>
-                                    <p style="margin: 5px 0; color: #2c5530; font-weight: 600;">
+                                    <p>
                                         <?php 
                                         // ACF: Result (excerpt)
                                         $result = get_field('result');
@@ -56,7 +56,7 @@
                                     </p>
                                 </div>
                                 
-                                <a href="<?php the_permalink(); ?>" style="color: #ff6b35; text-decoration: none; font-weight: 600;">
+                                <a href="<?php the_permalink(); ?>">
                                     Read Full Case Study →
                                 </a>
                             </div>
@@ -64,7 +64,7 @@
                     </article>
                 <?php endwhile; ?>
                 
-                <div style="text-align: center; margin-top: 60px;">
+                <div class="text-center">
                     <?php
                     echo paginate_links(array(
                         'prev_text' => '← Previous',
@@ -73,16 +73,16 @@
                     ?>
                 </div>
             <?php else : ?>
-                <p style="text-align: center; font-size: 1.1rem; color: #666;">
+                <p>
                     No case studies available yet. Check back soon!
                 </p>
             <?php endif; ?>
         </div>
         
         <!-- CTA -->
-        <div style="text-align: center; margin-top: 80px; background: linear-gradient(135deg, #2c5530 0%, #4a7c59 100%); color: white; padding: 50px; border-radius: 15px;">
-            <h2 style="color: white; margin-bottom: 20px;">Want to Be My Next Success Story?</h2>
-            <p style="margin-bottom: 30px; font-size: 1.1rem;">
+        <div class="cta-section">
+            <h2>Want to Be My Next Success Story?</h2>
+            <p>
                 Let's discuss how I can help automate your business and deliver similar results.
             </p>
             <a href="<?php echo get_permalink(get_page_by_path('contact')); ?>" class="btn">Start Your Project</a>
