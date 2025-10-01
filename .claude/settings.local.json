@@ -3,7 +3,10 @@
   "permissions": {
     "allow": [
       "Bash(git add:*)",
-      "Bash(git commit -m \"$(cat <<''EOF''\nUpdate WordPress theme with content improvements and case study materials\n\n- Refactored inline styles to CSS classes across all templates for better maintainability\n- Updated homepage messaging to focus on automation benefits and time savings\n- Enhanced about, contact, and services pages with clearer value propositions\n- Improved case study archive layout and presentation\n- Added Gladden Longevity AI case study content and import file\n- Added Google Fonts (Inter) integration to header\n- Updated Claude settings with additional permissions\n- Added new images directory\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")"
+      "Bash(git commit -m \"$(cat <<''EOF''\nUpdate WordPress theme with content improvements and case study materials\n\n- Refactored inline styles to CSS classes across all templates for better maintainability\n- Updated homepage messaging to focus on automation benefits and time savings\n- Enhanced about, contact, and services pages with clearer value propositions\n- Improved case study archive layout and presentation\n- Added Gladden Longevity AI case study content and import file\n- Added Google Fonts (Inter) integration to header\n- Updated Claude settings with additional permissions\n- Added new images directory\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "WebFetch(domain:rialtovacations.com)",
+      "WebFetch(domain:www.eminentinteriordesign.com)",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []

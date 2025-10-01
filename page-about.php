@@ -9,17 +9,17 @@
                 <div class="service-box">
                     <!-- Owner Info -->
                     <div>
-                        <img src="<?php echo get_template_directory_uri(); ?>/img/hero.jpg" alt="chris brody overlooking the canyon">
+                        <img src="<?php echo get_template_directory_uri(); ?>/img/hero.jpg" alt="chris brody overlooking the canyon" style="width:100%; height:100%"> 
                         <h2>Chris Brody - Automation Tool Engineer</h2>
                     </div> 
                     <!-- Mission Statement -->
-                    <h3 class="text-center">My Mission</h3>
+                    <h3>Mission</h3>
                     <p>
                         I help small businesses work smarter by building tools and websites that save time, reduce stress, and make day-to-day operations easier.
                     </p>
 
                     <!-- My Story -->
-                    <h3 class="text-center">My Story</h3>
+                    <h3>Story</h3>
                     
                     <div>
                         <p>I've spent years working with businesses of all shapes and sizes, and one thing always stood out: small business owners are constantly weighed down by repetitive tasks. Things like sending invoices, updating spreadsheets, or following up with customers take up hours every week — hours that could be spent growing your business or simply catching your breath.</p>

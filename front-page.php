@@ -3,12 +3,11 @@
 <!-- Hero Section -->
 <section class="hero">
     <div class="container">
-        <h1>Stop Wasting Time on Tasks Your Computer Should Handle</h1>
-        
-        <p class="subheadline">I build custom automation tools and professional websites that actually work for your business — not against it.</p>
-        
-        <a href="<?php echo get_permalink(get_page_by_path('contact')); ?>" class="btn">Get Your Free Automation Audit</a>
-        <a href="<?php echo get_permalink(get_page_by_path('services')); ?>" class="btn btn-secondary">See Real Examples</a>
+        <h1>GroundWorks Development</h1>
+
+        <p class="subheadline">Websites and Automation for Small Business</p>
+
+        <p class="subheadline">At GroundWorks Development, we help small businesses and local organizations work smarter. We specialize in two areas: creating professional websites that are reliable and easy to manage, and building custom automation tools that take care of routine tasks in the background so you can focus on your work.</p>
     </div>
 </section>
 
@@ -19,70 +18,43 @@
         
         <div class="services-grid">
             <div class="service-card">
-                <h3>Smart Automation That Actually Works</h3>
-                <p>Turn your biggest time-wasters into automated processes. While your competitors spend hours on spreadsheets and manual tasks, you'll be focusing on what actually grows your business.</p>
+                <h3>Automation That Simplifies Your Day</h3>
+                <p>Every business has those repetitive, time-consuming jobs — sending reminders, updating spreadsheets, tracking schedules. We design solutions that handle these tasks automatically, freeing up your time and reducing the chance of errors.</p>
             </div>
-            
+
             <div class="service-card">
-                <h3>Professional Websites That Convert</h3>
-                <p>Get a website that actually brings in customers, not just looks pretty. Everything included: design, hosting, updates, and maintenance — for one predictable monthly fee.</p>
+                <h3>Websites That Support Your Work</h3>
+                <p>Your website should be more than a digital brochure. We build sites that are dependable, easy to update, and tailored to your needs. Hosting, security, and ongoing maintenance are included, so you don't have to worry about technical details.</p>
             </div>
-            
+
             <div class="service-card">
-                <h3>Official .gov Sites for Small Towns</h3>
-                <p>Finally get the credibility your town deserves. We handle the entire .gov transition process — paperwork, approvals, design, and launch. No bureaucratic headaches for you.</p>
-                <a href="<?php echo get_permalink(get_page_by_path('gov-transitions')); ?>">See our proven 6-step process →</a>
+                <h3>.gov Websites for Local Communities</h3>
+                <p>For municipalities and small towns, we guide you through the transition to an official .gov website. From the paperwork to the design and launch, we make the process straightforward and manageable, helping your community build trust and credibility online.</p>
+                <a href="<?php echo get_permalink(get_page_by_path('gov-transitions')); ?>">Learn more →</a>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Automation Benefits -->
+<!-- Our Approach -->
 <section class="section">
     <div class="container">
-        <h2>Real Businesses, Real Time Savings</h2>
-        
-        <ul class="benefits-list">
-            <li>Local contractor saved 8 hours/week automating invoice generation and payment reminders</li>
-            <li>Retail shop eliminated manual inventory tracking — now syncs automatically with their POS</li>
-            <li>Service business automated customer follow-ups — increased repeat bookings by 40%</li>
-            <li>Restaurant streamlined staff scheduling and reduced no-shows by 60%</li>
-        </ul>
-        
-        <!-- TODO: Add testimonials -->
-    </div>
-</section>
+        <h2>Our Approach</h2>
 
-<!-- How It Works -->
-<section class="section how-it-works">
-    <div class="container">
-        <h2>Why Monthly Pricing Actually Saves You Money</h2>
-        
-        <ul>
-            <li>No $5,000+ upfront website bill — start for less than your monthly phone plan</li>
-            <li>No "surprise" hosting crashes or security breaches — we handle everything</li>
-            <li>No paying extra for updates or changes — unlimited revisions included</li>
-            <li>No wondering if your site is working — 24/7 monitoring and instant fixes</li>
-        </ul>
-        
-        <div class="text-center">
-            <p class="p-italic">
-                One predictable monthly fee. Everything included. No surprises. Ever.
-            </p>
-        </div>
+        <p>We believe technology should work for you, not against you. That's why we take the time to understand your workflow and goals before recommending tools or building a site. The result is practical, sustainable solutions that save time and reduce frustration.</p>
     </div>
 </section>
 
 <!-- Final CTA -->
 <section class="section">
     <div class="container text-center">
-        <h2>Stop Doing Work Your Computer Should Handle</h2>
-        
+        <h2>Ready to Learn More?</h2>
+
         <p>
-            Book a free 30-minute audit call. We'll identify your biggest time-wasters and show you exactly how to automate them.
+            We offer a complimentary consultation to help identify where automation and website improvements could make the biggest impact for you.
         </p>
-        
-        <a href="<?php echo get_permalink(get_page_by_path('contact')); ?>" class="btn">Get My Free Automation Audit</a>
+
+        <a href="<?php echo get_permalink(get_page_by_path('contact')); ?>" class="btn">Schedule a Consultation</a>
     </div>
 </section>
 
