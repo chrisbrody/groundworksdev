@@ -11,7 +11,19 @@ A custom WordPress theme for small business automation and monthly website servi
 - **SEO Optimized**: Semantic HTML structure and proper heading hierarchy
 - **Performance Focused**: Minimal dependencies and optimized code
 
-## Installation
+## Local Development
+
+1. Make sure Docker is running
+2. Run:
+   ```bash
+   docker-compose up -d
+   ```
+3. Go to http://localhost:8080
+4. Complete WordPress setup, then activate the theme in Appearance → Themes
+
+To stop: `docker-compose down`
+
+## Installation (Production)
 
 1. Upload theme files to `/wp-content/themes/groundworks-dev/`
 2. Install Advanced Custom Fields Pro plugin (only required for case studies)
