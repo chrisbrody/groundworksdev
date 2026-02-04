@@ -1,106 +1,87 @@
 <?php get_header(); ?>
 
-<section class="section">
+<section class="hero" style="min-height: auto; padding: 160px 0 80px;">
     <div class="container">
-        <div class="contact-header">
+        <div class="hero-content reveal" style="max-width: 700px;">
+            <span class="label">Get In Touch</span>
             <h1>Ready to Run Smarter?</h1>
-            
-            <p>Have a project in mind, or just want to see what’s possible? Let’s connect and find the right fit for your business.</p>
+            <p class="hero-copy">Have a project in mind, or just want to see what's possible? Let's connect and find the right fit for your business.</p>
         </div>
-        
-        <div class="contact-form-container">
-            <div class="contact-form-box">
-                
-                <?php 
-                // Display success message if form was submitted
-                if (isset($_GET['success']) && $_GET['success'] == 'true') : ?>
-                    <div class="success-message">
-                        <h3>Message Sent Successfully!</h3>
-                        <p>I'll reply within 1 business day to schedule your no-pressure discovery call.</p>
-                    </div>
-                <?php endif; ?>
-                
-                <?php 
-                // Display error message if form submission failed
-                if (isset($_GET['error']) && $_GET['error'] == 'true') : 
-                    $error_message = isset($_GET['message']) ? urldecode($_GET['message']) : 'An error occurred. Please try again.';
-                ?>
-                    <div class="error-message">
-                        <h3>Error</h3>
-                        <p><?php echo esc_html($error_message); ?></p>
-                    </div>
-                <?php endif; ?>
-                
+    </div>
+</section>
+
+<section class="section" style="padding-top: 0;">
+    <div class="container">
+        <div class="cta-container" style="gap: 60px;">
+            <div class="diagnostic-form reveal">
                 <form class="contact-form" method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
                     <input type="hidden" name="action" value="contact_form_submission">
                     <?php wp_nonce_field('contact_form_nonce', 'contact_nonce'); ?>
-                    
-                    <div class="form-group">
+
+                    <div class="form-input-group">
                         <label for="contact_name">Your Name *</label>
-                        <input type="text" id="contact_name" name="contact_name" required>
+                        <input type="text" id="contact_name" name="contact_name" placeholder="John Smith" required>
                     </div>
-                    
-                    <div class="form-group">
+
+                    <div class="form-input-group">
                         <label for="contact_email">Email Address *</label>
-                        <input type="email" id="contact_email" name="contact_email" required>
+                        <input type="email" id="contact_email" name="contact_email" placeholder="john@company.com" required>
                     </div>
-                    
-                    <div class="form-group">
+
+                    <div class="form-input-group">
                         <label for="business_name">Business Name</label>
-                        <input type="text" id="business_name" name="business_name">
+                        <input type="text" id="business_name" name="business_name" placeholder="Your Company">
                     </div>
-                    
-                    <div class="form-group">
+
+                    <div class="form-input-group">
                         <label for="contact_message">What would you like help with? *</label>
-                        <textarea id="contact_message" name="contact_message" placeholder="Tell me about your business and what you'd like to automate or improve..." required></textarea>
+                        <textarea id="contact_message" name="contact_message" rows="5" placeholder="Tell us about your business and what you'd like to automate or improve..." required style="width: 100%; padding: 16px 20px; font-family: var(--font-body); font-size: 1rem; color: var(--text-primary); background: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: 8px; outline: none; transition: var(--transition-base); resize: vertical;"></textarea>
                     </div>
-                    
-                    <div class="text-center">
-                        <button type="submit" class="btn">Send Message</button>
-                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
                 </form>
             </div>
-            
-            <!-- Next Steps -->
-            <div class="next-steps next-steps-flex">
-                <h3>What Happens Next?</h3>
-                
-                <div class="steps-flex">
-                    <div class="step-item">
-                        <div class="step-number">1</div>
-                        <h4>Quick Response</h4>
-                        <p>I'll reply within 1 business day to acknowledge your message.</p>
+
+            <div class="cta-content reveal reveal-delay-2">
+                <h3 class="offer-title" style="margin-top: 0;">What Happens Next?</h3>
+
+                <div class="next-steps-list">
+                    <div class="next-step-item">
+                        <div class="step-number-inline">1</div>
+                        <div>
+                            <h4>Quick Response</h4>
+                            <p>We'll reply within 1 business day to acknowledge your message.</p>
+                        </div>
                     </div>
-                    
-                    <div class="step-item">
-                        <div class="step-number">2</div>
-                        <h4>Discovery Call</h4>
-                        <p>We'll schedule a 30-minute call to discuss your needs and goals.</p>
+
+                    <div class="next-step-item">
+                        <div class="step-number-inline">2</div>
+                        <div>
+                            <h4>Discovery Call</h4>
+                            <p>We'll schedule a 30-minute call to discuss your needs and goals.</p>
+                        </div>
                     </div>
-                    
-                    <div class="step-item">
-                        <div class="step-number">3</div>
-                        <h4>Custom Proposal</h4>
-                        <p>I'll create a tailored solution proposal for your specific situation.</p>
+
+                    <div class="next-step-item">
+                        <div class="step-number-inline">3</div>
+                        <div>
+                            <h4>Custom Proposal</h4>
+                            <p>We'll create a tailored solution proposal for your specific situation.</p>
+                        </div>
                     </div>
                 </div>
-                
-                <p class="p-italic">No pressure, no pushy sales tactics. Just honest advice about what will work best for your business.</p>
-            </div>
-            
-            <!-- Alternative Contact Methods -->
-            <div class="contact-methods">
-                <h4>Prefer to reach out directly?</h4>
-                
-                <div class="contact-methods-grid">
-                    
-                    <div>
-                        <strong>Email:</strong><br>
-                        <a href="mailto:contact@groundworksdev@gmail.com">
-                            contact@groundworksdev.com
-                        </a>
-                    </div>
-                    
+
+                <p class="guarantee">No pressure, no pushy sales tactics. Just honest advice about what will work best for your business.</p>
+
+                <div class="contact-direct" style="margin-top: 40px; padding-top: 40px; border-top: 1px solid var(--border-color);">
+                    <p class="label" style="margin-bottom: 16px;">Prefer Email?</p>
+                    <a href="mailto:groundworksdevelopment@gmail.com" class="btn btn-ghost" style="padding: 0;">
+                        groundworksdevelopment@gmail.com
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
                 </div>
             </div>
         </div>
@@ -108,27 +89,63 @@
 </section>
 
 <style>
-@media (max-width: 768px) {
-    .section div[style*="grid-template-columns"] {
-        display: block !important;
+    .next-steps-list {
+        margin: 32px 0;
     }
-    
-    .section div[style*="grid-template-columns"] > div {
-        margin-bottom: 30px;
+
+    .next-step-item {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 24px;
+        align-items: flex-start;
     }
-    
-    .section div[style*="grid-template-columns"] > div:last-child {
-        margin-bottom: 0;
+
+    .step-number-inline {
+        width: 36px;
+        height: 36px;
+        min-width: 36px;
+        background: var(--bg-tertiary);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-mono);
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--accent-orange);
     }
-    
-    .section div[style*="display: flex"] {
-        display: block !important;
+
+    .next-step-item h4 {
+        font-family: var(--font-mono);
+        font-size: 1rem;
+        color: var(--text-primary);
+        margin-bottom: 4px;
     }
-    
-    .section div[style*="display: flex"] > div {
-        margin-bottom: 20px;
+
+    .next-step-item p {
+        font-size: 0.9375rem;
+        color: var(--text-muted);
+        margin: 0;
     }
-}
+
+    textarea:focus {
+        border-color: var(--accent-orange);
+    }
+
+    @media (max-width: 992px) {
+        .cta-container {
+            grid-template-columns: 1fr !important;
+        }
+
+        .diagnostic-form {
+            order: 2;
+        }
+
+        .cta-content {
+            order: 1;
+        }
+    }
 </style>
 
 <?php get_footer(); ?>
