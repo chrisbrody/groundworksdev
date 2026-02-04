@@ -3,15 +3,13 @@
 <footer class="site-footer">
     <div class="container">
         <div class="footer-content">
-            <?php
-            // First, try to display widgets if the area is active
-            if (is_active_sidebar('footer-area')) {
-                dynamic_sidebar('footer-area');
-            }
-            ?>
-            <!-- ALWAYS display the copyright and tagline -->
-            <p>© <?php echo date('Y'); ?> GroundWorks Development. All rights reserved.</p>
-            <p>Websites and Automation for Small Business</p>
+            <div class="footer-brand">
+                <a href="<?php echo home_url(); ?>" class="logo">GROUNDWORKS</a>
+                <p>Operational infrastructure for businesses that want to scale without scaling headcount.</p>
+            </div>
+            <div class="footer-meta">
+                <p>&copy; <?php echo date('Y'); ?> GroundWorks Development</p>
+            </div>
         </div>
     </div>
 </footer>
