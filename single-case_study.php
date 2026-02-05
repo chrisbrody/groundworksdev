@@ -1,5 +1,78 @@
 <?php get_header(); ?>
 
+<?php
+// Gather ACF meta for schema
+$cs_client_type = get_post_meta(get_the_ID(), 'client_type', true);
+$cs_challenge   = get_post_meta(get_the_ID(), 'challenge', true);
+$cs_solution    = get_post_meta(get_the_ID(), 'solution', true);
+$cs_result      = get_post_meta(get_the_ID(), 'result', true);
+$cs_quote       = get_post_meta(get_the_ID(), 'client_quote', true);
+$cs_quote_name  = get_post_meta(get_the_ID(), 'client_name', true);
+
+// Build description from available content
+$cs_description = '';
+if ($cs_challenge) {
+    $cs_description .= wp_strip_all_tags($cs_challenge);
+}
+if ($cs_solution) {
+    $cs_description .= ' ' . wp_strip_all_tags($cs_solution);
+}
+$cs_description = mb_substr(trim($cs_description), 0, 300);
+?>
+
+<!-- JSON-LD: Article Schema (Case Study) -->
+<script type="application/ld+json">
+<?php
+$article_schema = array(
+    '@context'      => 'https://schema.org',
+    '@type'         => 'Article',
+    'headline'      => get_the_title(),
+    'description'   => $cs_description,
+    'datePublished' => get_the_date('c'),
+    'dateModified'  => get_the_modified_date('c'),
+    'url'           => get_permalink(),
+    'author'        => array(
+        '@type' => 'Organization',
+        'name'  => 'GroundWorks Development'
+    ),
+    'publisher'     => array(
+        '@type' => 'Organization',
+        'name'  => 'GroundWorks Development',
+        'url'   => home_url()
+    ),
+    'articleSection' => $cs_client_type ? $cs_client_type : 'Case Study',
+    'about'          => array(
+        '@type' => 'Thing',
+        'name'  => 'Business Process Automation'
+    )
+);
+
+// Add thumbnail if available
+if (has_post_thumbnail()) {
+    $article_schema['image'] = get_the_post_thumbnail_url(get_the_ID(), 'full');
+}
+
+// Add review/testimonial if quote exists
+if ($cs_quote) {
+    $review = array(
+        '@type'      => 'Review',
+        'reviewBody' => $cs_quote,
+        'author'     => array(
+            '@type' => 'Person',
+            'name'  => $cs_quote_name ? $cs_quote_name : 'Client'
+        ),
+        'itemReviewed' => array(
+            '@type' => 'Organization',
+            'name'  => 'GroundWorks Development'
+        )
+    );
+    $article_schema['review'] = $review;
+}
+
+echo wp_json_encode($article_schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
+?>
+</script>
+
 <section class="hero" style="min-height: auto; padding: 160px 0 80px;">
     <div class="container">
         <div class="hero-content" style="max-width: 900px;">

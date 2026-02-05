@@ -1,5 +1,31 @@
 <?php get_header(); ?>
 
+<!-- JSON-LD: Person Schema -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Chris Brody",
+    "jobTitle": "Founder & Automation Engineer",
+    "description": "Founder of GroundWorks Development. Builds custom automation systems and operational infrastructure for small businesses and municipalities.",
+    "worksFor": {
+        "@type": "Organization",
+        "name": "GroundWorks Development",
+        "url": "<?php echo home_url(); ?>"
+    },
+    "dateModified": "<?php echo get_the_modified_date('c'); ?>",
+    "knowsAbout": [
+        "Business Process Automation",
+        "Revenue Operations",
+        "Workflow Engineering",
+        "API Integrations",
+        "Government Technology",
+        ".gov Website Transitions",
+        "Web Development"
+    ]
+}
+</script>
+
 <section class="section">
     <div class="container">
         <div class="page-header">

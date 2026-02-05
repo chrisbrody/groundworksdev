@@ -18,13 +18,42 @@ function groundworks_theme_setup() {
 }
 add_action('after_setup_theme', 'groundworks_theme_setup');
 
+// Auto-create and configure blog page
+function groundworks_setup_blog_page() {
+    $blog_page_id = get_option('page_for_posts');
+
+    // If no blog page is set, create one
+    if (!$blog_page_id || !get_post($blog_page_id)) {
+        $blog_page = get_page_by_path('blog');
+
+        if (!$blog_page) {
+            // Create the blog page
+            $blog_page_id = wp_insert_post(array(
+                'post_title' => 'Blog',
+                'post_name' => 'blog',
+                'post_type' => 'page',
+                'post_status' => 'publish',
+                'post_content' => '',
+            ));
+        } else {
+            $blog_page_id = $blog_page->ID;
+        }
+
+        // Set it as the posts page
+        if ($blog_page_id) {
+            update_option('page_for_posts', $blog_page_id);
+        }
+    }
+}
+add_action('init', 'groundworks_setup_blog_page');
+
 // Enqueue Scripts and Styles
 function groundworks_enqueue_scripts() {
     // Main stylesheet
-    wp_enqueue_style('groundworks-style', get_stylesheet_uri(), array(), '3.0');
+    wp_enqueue_style('groundworks-style', get_stylesheet_uri(), array(), '3.2');
 
     // Main JavaScript
-    wp_enqueue_script('groundworks-script', get_template_directory_uri() . '/js/main.js', array(), '3.0', true);
+    wp_enqueue_script('groundworks-script', get_template_directory_uri() . '/js/main.js', array(), '3.2', true);
 
     // Pass data to JavaScript if needed
     wp_localize_script('groundworks-script', 'groundworksData', array(
@@ -308,6 +337,74 @@ function groundworks_display_notices() {
     }
 }
 add_action('wp_body_open', 'groundworks_display_notices');
+
+// Open Graph Meta Tags + Canonical URLs
+function groundworks_og_and_canonical() {
+    $site_name = 'GroundWorks Development';
+    $default_desc = 'GroundWorks engineers custom automation systems that eliminate manual processes, reduce operational leakage, and give business owners back 10-20 hours per week.';
+    $default_image = get_template_directory_uri() . '/img/hero.jpg';
+
+    // Determine title, description, URL, and type per page
+    if (is_front_page()) {
+        $og_title = 'GroundWorks Development — Custom Business Automation Systems';
+        $og_desc = $default_desc;
+        $og_url = home_url('/');
+        $og_type = 'website';
+    } elseif (is_singular()) {
+        $og_title = get_the_title() . ' — ' . $site_name;
+        $og_desc = has_excerpt() ? get_the_excerpt() : mb_substr(wp_strip_all_tags(get_the_content()), 0, 200);
+        $og_url = get_permalink();
+        $og_type = is_singular('post') ? 'article' : 'website';
+    } elseif (is_post_type_archive('case_study')) {
+        $og_title = 'Case Studies — ' . $site_name;
+        $og_desc = 'Real operational outcomes from businesses that automated with GroundWorks Development.';
+        $og_url = get_post_type_archive_link('case_study');
+        $og_type = 'website';
+    } else {
+        $og_title = wp_title('—', false, 'right') . $site_name;
+        $og_desc = $default_desc;
+        $og_url = home_url($_SERVER['REQUEST_URI']);
+        $og_type = 'website';
+    }
+
+    // Get featured image or fallback
+    $og_image = $default_image;
+    if (is_singular() && has_post_thumbnail()) {
+        $og_image = get_the_post_thumbnail_url(get_the_ID(), 'large');
+    }
+
+    // Clean description
+    $og_desc = esc_attr(wp_strip_all_tags(html_entity_decode($og_desc)));
+    if (strlen($og_desc) > 200) {
+        $og_desc = mb_substr($og_desc, 0, 197) . '...';
+    }
+
+    ?>
+    <!-- Open Graph -->
+    <meta property="og:site_name" content="<?php echo esc_attr($site_name); ?>">
+    <meta property="og:title" content="<?php echo esc_attr($og_title); ?>">
+    <meta property="og:description" content="<?php echo $og_desc; ?>">
+    <meta property="og:url" content="<?php echo esc_url($og_url); ?>">
+    <meta property="og:type" content="<?php echo $og_type; ?>">
+    <meta property="og:image" content="<?php echo esc_url($og_image); ?>">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<?php echo esc_attr($og_title); ?>">
+    <meta name="twitter:description" content="<?php echo $og_desc; ?>">
+    <meta name="twitter:image" content="<?php echo esc_url($og_image); ?>">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="<?php echo esc_url($og_url); ?>">
+
+    <!-- Dynamic Meta Description -->
+    <meta name="description" content="<?php echo $og_desc; ?>">
+    <?php
+}
+add_action('wp_head', 'groundworks_og_and_canonical', 1);
+
+// Remove WordPress default canonical to avoid duplicates
+remove_action('wp_head', 'rel_canonical');
 
 // Add notice banner styles
 function groundworks_notice_styles() {
