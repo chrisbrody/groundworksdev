@@ -1,11 +1,135 @@
 <?php get_header(); ?>
 
+<?php
+// Gov transitions FAQ data
+$gov_faqs = array(
+    array(
+        'question' => 'How long does it take to get a .gov domain?',
+        'answer'   => 'The .gov domain approval process typically takes 30-60 days after submission to the .gov registry. During this waiting period, we build and prepare your new website so it\'s ready to launch as soon as the domain is approved. The full transition from start to live site usually completes within 2-3 months.'
+    ),
+    array(
+        'question' => 'Is a .gov domain free for municipalities?',
+        'answer'   => 'Yes. The .gov registry provides .gov domains at no cost to eligible U.S.-based government organizations, including towns, cities, counties, and tribal governments. There are no annual domain renewal fees. The primary costs are website development, hosting, and ongoing maintenance—which is where GroundWorks comes in.'
+    ),
+    array(
+        'question' => 'What are the requirements to qualify for a .gov domain?',
+        'answer'   => 'To qualify for a .gov domain, your organization must be a U.S.-based government entity—federal, state, local, or tribal. For municipalities, this includes towns, cities, villages, and counties. You\'ll need to verify your organization\'s identity through login.gov and provide authorization from a government official. GroundWorks handles the documentation and application process for you.'
+    ),
+    array(
+        'question' => 'What happens to our old website during the transition?',
+        'answer'   => 'Your old website stays live throughout the entire transition process. Once your new .gov site is ready and approved, we set up automatic redirects from your old domain to the new .gov address, so residents who visit your old URL are seamlessly forwarded. We also coordinate announcements for local media. The old site is only retired after the new one is fully operational.'
+    ),
+    array(
+        'question' => 'Do we need IT staff to maintain a .gov website?',
+        'answer'   => 'No. GroundWorks designs .gov websites specifically for municipalities without dedicated IT departments. We provide comprehensive training for staff updates, and offer ongoing managed services for hosting, security, and maintenance. The system includes automated compliance documentation and self-service portals that run without technical oversight.'
+    ),
+);
+?>
+
+<!-- JSON-LD: GovernmentService Schema -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "GovernmentService",
+    "name": ".gov Website Transition Service",
+    "dateModified": "<?php echo get_the_modified_date('c'); ?>",
+    "description": "Complete .gov domain transition service for small municipalities—from registration through to a fully operational government website with automated public records, citizen portals, and compliance documentation.",
+    "provider": {
+        "@type": "Organization",
+        "name": "GroundWorks Development"
+    },
+    "serviceType": "Government Website Development",
+    "areaServed": {
+        "@type": "Country",
+        "name": "United States"
+    },
+    "audience": {
+        "@type": "Audience",
+        "audienceType": "Small municipalities and rural towns"
+    }
+}
+</script>
+
+<!-- JSON-LD: HowTo Schema (6-Step Process) -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Transition Your Town to a .gov Website",
+    "dateModified": "<?php echo get_the_modified_date('c'); ?>",
+    "description": "A complete 6-step process for small municipalities to transition from their current website to an official .gov domain, handled by GroundWorks Development.",
+    "totalTime": "P90D",
+    "step": [
+        {
+            "@type": "HowToStep",
+            "position": 1,
+            "name": "Login.gov Registration",
+            "text": "Register a town representative on login.gov to begin the official .gov website request process. A designated representative can be provided if needed."
+        },
+        {
+            "@type": "HowToStep",
+            "position": 2,
+            "name": ".gov Domain Request",
+            "text": "Submit the official .gov domain application for your town and manage the approval process, including all documentation and communications with the .gov registry."
+        },
+        {
+            "@type": "HowToStep",
+            "position": 3,
+            "name": "Site Development and Training",
+            "text": "While waiting for domain approval, replicate and improve your current website for the new .gov domain and provide comprehensive training for staff updates."
+        },
+        {
+            "@type": "HowToStep",
+            "position": 4,
+            "name": "Hosting Setup",
+            "text": "Once the .gov domain is approved, launch the new website on managed hosting services or coordinate with the town's preferred hosting provider."
+        },
+        {
+            "@type": "HowToStep",
+            "position": 5,
+            "name": "IT Integration",
+            "text": "Coordinate with the town's IT team or provide IT services to ensure smooth transition of email systems and website functionality to the new .gov infrastructure."
+        },
+        {
+            "@type": "HowToStep",
+            "position": 6,
+            "name": "Launch and Transition",
+            "text": "Provide official announcements for local papers, set up automatic redirects from the old website, and monitor the transition for several months until everything runs smoothly."
+        }
+    ]
+}
+</script>
+
+<!-- JSON-LD: FAQPage Schema (Gov Transitions) -->
+<script type="application/ld+json">
+<?php
+$gov_faq_schema = array(
+    '@context'      => 'https://schema.org',
+    '@type'         => 'FAQPage',
+    'dateModified'  => get_the_modified_date('c'),
+    'mainEntity'    => array()
+);
+foreach ($gov_faqs as $faq) {
+    $gov_faq_schema['mainEntity'][] = array(
+        '@type' => 'Question',
+        'name'  => $faq['question'],
+        'acceptedAnswer' => array(
+            '@type' => 'Answer',
+            'text'  => $faq['answer']
+        )
+    );
+}
+echo wp_json_encode($gov_faq_schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
+?>
+</script>
+
 <section class="hero" style="min-height: auto; padding: 160px 0 80px;">
     <div class="container">
         <div class="hero-content" style="max-width: 900px;">
             <span class="label">Civic Infrastructure</span>
             <h1>Helping Towns Transition to Official .gov Websites</h1>
             <p class="hero-copy">Small rural towns need official .gov websites to build trust with residents and comply with transparency requirements. We handle the entire transition process—from registration to launch.</p>
+            <p class="page-updated">Last updated: <?php echo get_the_modified_date('F j, Y'); ?></p>
             <div class="hero-cta">
                 <button onclick="openGovTransitionModal()" class="magnetic-btn">
                     <span class="btn btn-primary">Start Your Town's .gov Transition</span>
@@ -118,6 +242,32 @@
                 <h3>Compliance Ready</h3>
                 <p>Meet federal and state requirements for government transparency and digital accessibility standards.</p>
             </div>
+        </div>
+    </div>
+</section>
+
+<!-- Gov FAQ Section -->
+<section class="section" style="border-top: 1px solid var(--border-color);">
+    <div class="container">
+        <div class="text-center" style="max-width: 800px; margin: 0 auto 64px;">
+            <span class="label">Common Questions</span>
+            <h2>Questions About .gov Transitions</h2>
+        </div>
+        <div class="faq-container" style="max-width: 900px; margin: 0 auto;">
+            <?php foreach ($gov_faqs as $index => $faq) : ?>
+                <div class="faq-item" data-faq="gov-<?php echo $index; ?>">
+                    <button class="faq-question" aria-expanded="false" aria-controls="gov-faq-answer-<?php echo $index; ?>">
+                        <span><?php echo esc_html($faq['question']); ?></span>
+                        <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                    </button>
+                    <div class="faq-answer" id="gov-faq-answer-<?php echo $index; ?>" role="region">
+                        <p><?php echo esc_html($faq['answer']); ?></p>
+                    </div>
+                </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>
@@ -484,6 +634,63 @@
             grid-template-columns: 1fr;
         }
     }
+
+    /* FAQ Accordion */
+    .faq-container { max-width: 900px; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid var(--border-color); }
+    .faq-item:first-child { border-top: 1px solid var(--border-color); }
+
+    .faq-question {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 24px;
+        padding: 28px 0;
+        background: none;
+        border: none;
+        cursor: pointer;
+        text-align: left;
+        font-family: var(--font-mono);
+        font-size: 1.0625rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        letter-spacing: -0.01em;
+        line-height: 1.4;
+        transition: color var(--transition-fast);
+    }
+
+    .faq-question:hover { color: var(--accent-orange); }
+
+    .faq-icon {
+        flex-shrink: 0;
+        color: var(--text-muted);
+        transition: transform var(--transition-base), color var(--transition-base);
+    }
+
+    .faq-item.open .faq-icon { transform: rotate(45deg); color: var(--accent-orange); }
+
+    .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .faq-item.open .faq-answer { max-height: 500px; }
+
+    .faq-answer p {
+        padding-bottom: 28px;
+        color: var(--text-secondary);
+        font-size: 1rem;
+        line-height: 1.8;
+        margin: 0;
+        max-width: 800px;
+    }
+
+    @media (max-width: 768px) {
+        .faq-question { font-size: 0.9375rem; padding: 24px 0; }
+        .faq-answer p { font-size: 0.9375rem; padding-bottom: 24px; }
+    }
 </style>
 
 <script>
@@ -517,6 +724,23 @@ document.addEventListener('DOMContentLoaded', function() {
     if (urlParams.get('success') || urlParams.get('error')) {
         openGovTransitionModal();
     }
+
+    // FAQ accordion
+    var faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(function(item) {
+        var button = item.querySelector('.faq-question');
+        button.addEventListener('click', function() {
+            var isOpen = item.classList.contains('open');
+            faqItems.forEach(function(otherItem) {
+                otherItem.classList.remove('open');
+                otherItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+            });
+            if (!isOpen) {
+                item.classList.add('open');
+                button.setAttribute('aria-expanded', 'true');
+            }
+        });
+    });
 });
 </script>
 

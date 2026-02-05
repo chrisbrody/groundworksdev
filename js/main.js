@@ -199,103 +199,103 @@ document.addEventListener('DOMContentLoaded', function() {
     // MULTI-STEP FORM
     // ============================================
     const form = document.getElementById('efficiency-form');
-    const formSteps = document.querySelectorAll('.form-step');
-    const progressSteps = document.querySelectorAll('.progress-step');
-    const formOptions = document.querySelectorAll('.form-option');
+    console.log('Efficiency form found:', !!form);
 
     if (form) {
-        // Handle form option selection
-        formOptions.forEach(option => {
-            option.addEventListener('click', function() {
-                const siblings = this.parentElement.querySelectorAll('.form-option');
-                siblings.forEach(sib => sib.classList.remove('selected'));
-                this.classList.add('selected');
+        console.log('Initializing form handlers...');
+        const formSteps = form.querySelectorAll('.form-step');
+        const progressSteps = document.querySelectorAll('.progress-step');
+
+        // Function to go to next step
+        function goToStep(nextStepNum) {
+            const currentStep = form.querySelector('.form-step.active');
+            if (!currentStep) return;
+
+            const currentStepNum = parseInt(currentStep.dataset.step);
+            if (nextStepNum === currentStepNum) return; // Already on this step
+
+            // Transition to next step
+            currentStep.classList.remove('active');
+            const nextStepEl = form.querySelector(`.form-step[data-step="${nextStepNum}"]`);
+            if (nextStepEl) {
+                nextStepEl.classList.add('active');
+            }
+
+            // Update progress
+            progressSteps.forEach(step => {
+                const stepNum = parseInt(step.dataset.step);
+                step.classList.remove('active', 'completed');
+                if (stepNum < nextStepNum) {
+                    step.classList.add('completed');
+                } else if (stepNum === nextStepNum) {
+                    step.classList.add('active');
+                }
             });
-        });
 
-        // Next button handlers
-        document.querySelectorAll('.form-next').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const currentStep = this.closest('.form-step');
-                const currentStepNum = parseInt(currentStep.dataset.step);
-                const nextStepNum = parseInt(this.dataset.next);
+            // Scroll to form
+            form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
 
-                // Validate current step
-                const requiredInputs = currentStep.querySelectorAll('input[required]');
-                let isValid = true;
+        // Handle form input changes with event delegation
+        form.addEventListener('change', function(e) {
+            if (e.target.type === 'radio' || e.target.type === 'range') {
+                console.log('Input changed:', e.target.type, e.target.name, 'Value:', e.target.value);
 
-                requiredInputs.forEach(input => {
-                    if (input.type === 'radio') {
-                        const radioGroup = currentStep.querySelectorAll(`input[name="${input.name}"]`);
-                        const isChecked = Array.from(radioGroup).some(radio => radio.checked);
-                        if (!isChecked) isValid = false;
-                    } else if (!input.value.trim()) {
-                        isValid = false;
+                if (e.target.type === 'radio') {
+                    // Mark option as selected
+                    const option = e.target.closest('.form-option');
+                    if (option) {
+                        const siblings = option.parentElement.querySelectorAll('.form-option');
+                        siblings.forEach(sib => sib.classList.remove('selected'));
+                        option.classList.add('selected');
                     }
-                });
 
-                if (!isValid) {
-                    // Visual feedback for missing selection
-                    currentStep.querySelectorAll('.form-option').forEach(opt => {
-                        opt.style.animation = 'shake 0.5s ease';
-                        setTimeout(() => opt.style.animation = '', 500);
-                    });
-                    return;
+                    // Auto-progress to next step
+                    const nextStep = e.target.dataset.nextStep;
+                    if (nextStep) {
+                        console.log('Progressing to step:', nextStep);
+                        setTimeout(() => goToStep(parseInt(nextStep)), 300);
+                    }
+                }
+            }
+        }, true); // Use capture phase for better compatibility
+
+        // Also handle slider progression
+        form.addEventListener('input', function(e) {
+            if (e.target.type === 'range' && e.target.id === 'form-hours-slider') {
+                console.log('Slider input:', e.target.value);
+                const formHoursValue = document.getElementById('form-hours-value');
+                if (formHoursValue) {
+                    formHoursValue.textContent = e.target.value;
                 }
 
-                // Transition to next step
-                currentStep.classList.remove('active');
-                document.querySelector(`.form-step[data-step="${nextStepNum}"]`).classList.add('active');
-
-                // Update progress
-                progressSteps.forEach(step => {
-                    const stepNum = parseInt(step.dataset.step);
-                    step.classList.remove('active', 'completed');
-                    if (stepNum < nextStepNum) {
-                        step.classList.add('completed');
-                    } else if (stepNum === nextStepNum) {
-                        step.classList.add('active');
-                    }
-                });
-            });
-        });
-
-        // Previous button handlers
-        document.querySelectorAll('.form-prev').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const currentStep = this.closest('.form-step');
-                const prevStepNum = parseInt(this.dataset.prev);
-
-                currentStep.classList.remove('active');
-                document.querySelector(`.form-step[data-step="${prevStepNum}"]`).classList.add('active');
-
-                // Update progress
-                progressSteps.forEach(step => {
-                    const stepNum = parseInt(step.dataset.step);
-                    step.classList.remove('active', 'completed');
-                    if (stepNum < prevStepNum) {
-                        step.classList.add('completed');
-                    } else if (stepNum === prevStepNum) {
-                        step.classList.add('active');
-                    }
-                });
-            });
-        });
-
-        // Form hours slider
-        const formHoursSlider = document.getElementById('form-hours-slider');
-        const formHoursValue = document.getElementById('form-hours-value');
-
-        if (formHoursSlider && formHoursValue) {
-            formHoursSlider.addEventListener('input', function() {
-                formHoursValue.textContent = this.value;
-
                 // Update slider track fill
-                const percentage = ((this.value - 1) / 39) * 100;
-                this.style.background = `linear-gradient(to right, #FF5C00 0%, #FF5C00 ${percentage}%, #1a1a1a ${percentage}%, #1a1a1a 100%)`;
-            });
+                const percentage = ((e.target.value - 1) / 39) * 100;
+                e.target.style.background = `linear-gradient(to right, #FF5C00 0%, #FF5C00 ${percentage}%, #1a1a1a ${percentage}%, #1a1a1a 100%)`;
 
-            // Initialize
+                // Auto-progress after slider interaction
+                clearTimeout(window.sliderChangeTimer);
+                window.sliderChangeTimer = setTimeout(() => {
+                    const nextStep = e.target.dataset.nextStep;
+                    if (nextStep) {
+                        console.log('Progressing from slider to step:', nextStep);
+                        goToStep(parseInt(nextStep));
+                    }
+                }, 500);
+            }
+        });
+
+// Previous button handlers
+        form.querySelectorAll('.form-prev').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const prevStepNum = parseInt(this.dataset.prev);
+                goToStep(prevStepNum);
+            });
+        });
+
+        // Initialize slider display
+        const formHoursSlider = form.querySelector('#form-hours-slider');
+        if (formHoursSlider) {
             const percentage = ((formHoursSlider.value - 1) / 39) * 100;
             formHoursSlider.style.background = `linear-gradient(to right, #FF5C00 0%, #FF5C00 ${percentage}%, #1a1a1a ${percentage}%, #1a1a1a 100%)`;
         }
@@ -303,13 +303,10 @@ document.addEventListener('DOMContentLoaded', function() {
         // Form submission
         form.addEventListener('submit', function(e) {
             const submitBtn = form.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
-
-            submitBtn.textContent = 'Sending...';
-            submitBtn.disabled = true;
-
-            // Allow form to submit normally
-            // If you want AJAX submission, prevent default and handle here
+            if (submitBtn) {
+                submitBtn.textContent = 'Sending...';
+                submitBtn.disabled = true;
+            }
         });
     }
 

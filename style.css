@@ -1429,6 +1429,17 @@ p {
 .mb-24 { margin-bottom: 24px; }
 .mb-48 { margin-bottom: 48px; }
 
+/* Page Updated Timestamp */
+.page-updated {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 16px;
+    margin-bottom: 0;
+}
+
 /* Hide custom cursor on touch devices */
 @media (hover: none) {
     .custom-cursor {

@@ -208,7 +208,147 @@
     </div>
 </section>
 
-<!-- SECTION 6: THE FINAL CTA (Diagnostic Form) -->
+<?php
+// Homepage FAQ data — AEO-optimized: concise answers, natural language queries
+$homepage_faqs = array(
+    array(
+        'question' => 'What does GroundWorks Development do?',
+        'answer'   => 'GroundWorks Development builds custom business automation systems that eliminate manual processes and operational bottlenecks. We engineer operational infrastructure—CRM integrations, automated billing, workflow routing, and .gov website transitions—designed around how your business actually runs, not around template limitations.'
+    ),
+    array(
+        'question' => 'Who is business automation for?',
+        'answer'   => 'Business automation is for service-based companies and small municipalities with 2-50 employees that have outgrown manual processes. If the business owner is still the bottleneck for approvals, status updates, or data entry—and the team spends more time on admin than actual work—automation will have an immediate impact.'
+    ),
+    array(
+        'question' => 'How much time does business automation save?',
+        'answer'   => 'Most businesses we work with recover 10-20 hours per week by automating manual processes like data entry, invoicing, follow-up emails, and status reporting. At $150/hour in opportunity cost, that translates to $78,000-$156,000 per year in recaptured capacity.'
+    ),
+    array(
+        'question' => 'What is the difference between custom automation and tools like Zapier?',
+        'answer'   => 'Tools like Zapier handle simple if-this-then-that triggers well. Custom automation handles the complex business logic that templates can\'t—exception handling, conditional routing, multi-system data flows, and the edge cases that cause 80% of operational headaches. Custom systems adapt when your business logic changes without workarounds.'
+    ),
+    array(
+        'question' => 'What is an Operations Efficiency Assessment?',
+        'answer'   => 'An Operations Efficiency Assessment is a free 45-minute session where GroundWorks maps your current workflows and identifies your top 3 time drains, realistic ROI on automation, and what can be fixed quickly versus what requires a longer build. You leave with a prioritized action plan regardless of whether you engage further.'
+    ),
+    array(
+        'question' => 'Can a small town get a .gov website without an IT department?',
+        'answer'   => 'Yes. GroundWorks handles the complete .gov domain transition for small municipalities—from registration through to a fully operational website with automated public records management, citizen self-service portals, and compliance documentation. The system is designed to run without dedicated IT staff.'
+    ),
+);
+?>
+
+<!-- JSON-LD: Organization Schema -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "GroundWorks Development",
+    "alternateName": "GroundWorks",
+    "url": "<?php echo home_url(); ?>",
+    "description": "GroundWorks Development builds custom business automation systems that eliminate manual processes, reduce operational leakage, and give business owners back 10-20 hours per week.",
+    "foundingDate": "2024",
+    "dateModified": "<?php echo get_the_modified_date('c'); ?>",
+    "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "groundworksdevelopment@gmail.com",
+        "contactType": "sales"
+    },
+    "sameAs": [
+        <?php
+        // PRIORITY 3: Add your profile URLs here as you create them.
+        // Uncomment each line and replace with your actual URL.
+        $same_as = array(
+            // "https://www.linkedin.com/company/groundworks-development",
+            // "https://www.upwork.com/freelancers/YOUR_PROFILE",
+            // "https://github.com/YOUR_USERNAME",
+            // "https://clutch.co/profile/YOUR_PROFILE"
+        );
+        echo implode(",\n        ", array_map(function($url) { return '"' . $url . '"'; }, $same_as));
+        ?>
+    ],
+    "knowsAbout": [
+        "Business Process Automation",
+        "Revenue Operations",
+        "CRM Integration",
+        "Workflow Automation",
+        "Invoice Automation",
+        ".gov Website Transitions",
+        "Municipal Government Technology",
+        "Operational Infrastructure"
+    ],
+    "areaServed": {
+        "@type": "Country",
+        "name": "United States"
+    },
+    "serviceType": [
+        "Business Automation",
+        "Revenue Operations Engineering",
+        "Operations Control Systems",
+        "Government Website Transitions"
+    ]
+}
+</script>
+
+<!-- JSON-LD: FAQPage Schema (Homepage) -->
+<script type="application/ld+json">
+<?php
+$faq_schema = array(
+    '@context'      => 'https://schema.org',
+    '@type'         => 'FAQPage',
+    'dateModified'  => get_the_modified_date('c'),
+    'mainEntity'    => array()
+);
+foreach ($homepage_faqs as $faq) {
+    $faq_schema['mainEntity'][] = array(
+        '@type' => 'Question',
+        'name'  => $faq['question'],
+        'acceptedAnswer' => array(
+            '@type' => 'Answer',
+            'text'  => $faq['answer']
+        )
+    );
+}
+echo wp_json_encode($faq_schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
+?>
+</script>
+
+<!-- SECTION 6: FAQ (AEO-Optimized) -->
+<section class="faq-section section">
+    <div class="container">
+        <div class="faq-header reveal">
+            <span class="label">Common Questions</span>
+            <h2>What Business Owners Ask Us</h2>
+        </div>
+        <div class="faq-container reveal">
+            <?php foreach ($homepage_faqs as $index => $faq) : ?>
+                <div class="faq-item" data-faq="hp-<?php echo $index; ?>">
+                    <button class="faq-question" aria-expanded="false" aria-controls="hp-faq-answer-<?php echo $index; ?>">
+                        <span><?php echo esc_html($faq['question']); ?></span>
+                        <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                    </button>
+                    <div class="faq-answer" id="hp-faq-answer-<?php echo $index; ?>" role="region">
+                        <p><?php echo esc_html($faq['answer']); ?></p>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+        <p class="text-center mt-40 reveal">
+            <a href="<?php echo get_permalink(get_page_by_path('faq')); ?>" class="btn btn-ghost">
+                View all frequently asked questions
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+            </a>
+        </p>
+    </div>
+</section>
+
+<!-- SECTION 7: THE FINAL CTA (Diagnostic Form) -->
 <section class="cta-section section" id="diagnostic-form">
     <div class="container">
         <div class="cta-container">
@@ -247,24 +387,21 @@
                         <h3 class="step-question">Where does your team waste the most time?</h3>
                         <div class="form-options">
                             <label class="form-option">
-                                <input type="radio" name="waste_area" value="sales" required>
+                                <input type="radio" name="waste_area" value="sales" required data-next-step="2">
                                 <span>Sales & Lead Management</span>
                             </label>
                             <label class="form-option">
-                                <input type="radio" name="waste_area" value="billing">
+                                <input type="radio" name="waste_area" value="billing" data-next-step="2">
                                 <span>Billing & Invoicing</span>
                             </label>
                             <label class="form-option">
-                                <input type="radio" name="waste_area" value="operations">
+                                <input type="radio" name="waste_area" value="operations" data-next-step="2">
                                 <span>Operations & Workflow</span>
                             </label>
                             <label class="form-option">
-                                <input type="radio" name="waste_area" value="government">
+                                <input type="radio" name="waste_area" value="government" data-next-step="2">
                                 <span>Government / Compliance</span>
                             </label>
-                        </div>
-                        <div class="form-nav">
-                            <button type="button" class="btn btn-primary form-next" data-next="2">Continue</button>
                         </div>
                     </div>
 
@@ -274,21 +411,20 @@
                         <h3 class="step-question">How large is your team?</h3>
                         <div class="form-options">
                             <label class="form-option">
-                                <input type="radio" name="team_size" value="1-5" required>
+                                <input type="radio" name="team_size" value="1-5" required data-next-step="3">
                                 <span>1-5 people</span>
                             </label>
                             <label class="form-option">
-                                <input type="radio" name="team_size" value="6-20">
+                                <input type="radio" name="team_size" value="6-20" data-next-step="3">
                                 <span>6-20 people</span>
                             </label>
                             <label class="form-option">
-                                <input type="radio" name="team_size" value="21+">
+                                <input type="radio" name="team_size" value="21+" data-next-step="3">
                                 <span>21+ people</span>
                             </label>
                         </div>
                         <div class="form-nav">
                             <button type="button" class="btn btn-secondary btn-back form-prev" data-prev="1">Back</button>
-                            <button type="button" class="btn btn-primary form-next" data-next="3">Continue</button>
                         </div>
                     </div>
 
@@ -298,11 +434,10 @@
                         <h3 class="step-question">How many hours per week on manual processes?</h3>
                         <div class="hours-slider-container">
                             <div class="hours-slider-display"><span id="form-hours-value">10</span> hours/week</div>
-                            <input type="range" min="1" max="40" value="10" class="form-slider" id="form-hours-slider" name="weekly_hours">
+                            <input type="range" min="1" max="40" value="10" class="form-slider" id="form-hours-slider" name="weekly_hours" data-next-step="4">
                         </div>
                         <div class="form-nav">
                             <button type="button" class="btn btn-secondary btn-back form-prev" data-prev="2">Back</button>
-                            <button type="button" class="btn btn-primary form-next" data-next="4">Continue</button>
                         </div>
                     </div>
 
@@ -318,7 +453,7 @@
                             <label for="company-name">Company Name (optional)</label>
                             <input type="text" id="company-name" name="company" placeholder="Your Company">
                         </div>
-                        <div class="form-nav">
+                        <div class="form-nav" style="justify-content: space-between;">
                             <button type="button" class="btn btn-secondary btn-back form-prev" data-prev="3">Back</button>
                             <button type="submit" class="btn btn-primary">Request Assessment</button>
                         </div>
@@ -328,5 +463,121 @@
         </div>
     </div>
 </section>
+
+<style>
+    /* FAQ Section */
+    .faq-section {
+        border-top: 1px solid var(--border-color);
+    }
+
+    .faq-header {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 64px;
+    }
+
+    .faq-container {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .faq-item {
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .faq-item:first-child {
+        border-top: 1px solid var(--border-color);
+    }
+
+    .faq-question {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 24px;
+        padding: 28px 0;
+        background: none;
+        border: none;
+        cursor: pointer;
+        text-align: left;
+        font-family: var(--font-mono);
+        font-size: 1.0625rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        letter-spacing: -0.01em;
+        line-height: 1.4;
+        transition: color var(--transition-fast);
+    }
+
+    .faq-question:hover {
+        color: var(--accent-orange);
+    }
+
+    .faq-icon {
+        flex-shrink: 0;
+        color: var(--text-muted);
+        transition: transform var(--transition-base), color var(--transition-base);
+    }
+
+    .faq-item.open .faq-icon {
+        transform: rotate(45deg);
+        color: var(--accent-orange);
+    }
+
+    .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .faq-item.open .faq-answer {
+        max-height: 500px;
+    }
+
+    .faq-answer p {
+        padding-bottom: 28px;
+        color: var(--text-secondary);
+        font-size: 1rem;
+        line-height: 1.8;
+        margin: 0;
+        max-width: 800px;
+    }
+
+    @media (max-width: 768px) {
+        .faq-header {
+            margin-bottom: 40px;
+        }
+
+        .faq-question {
+            font-size: 0.9375rem;
+            padding: 24px 0;
+        }
+
+        .faq-answer p {
+            font-size: 0.9375rem;
+            padding-bottom: 24px;
+        }
+    }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(function(item) {
+        var button = item.querySelector('.faq-question');
+        button.addEventListener('click', function() {
+            var isOpen = item.classList.contains('open');
+            faqItems.forEach(function(otherItem) {
+                otherItem.classList.remove('open');
+                otherItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+            });
+            if (!isOpen) {
+                item.classList.add('open');
+                button.setAttribute('aria-expanded', 'true');
+            }
+        });
+    });
+});
+</script>
 
 <?php get_footer(); ?>
